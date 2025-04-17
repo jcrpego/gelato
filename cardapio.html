@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="navbar.js"></script> <!-- Menu dinâmico -->
+  <script src="login.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  
+<style>
+.card {
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+
+
+    .btn-filtro {
+      margin: 0 5px 10px 5px;
+    }
+    .cardapio-item {
+      display: none; /* Todos ocultos por padrão */
+    }
+
+    .card {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out, transform 0.3s ease;
+}
+
+.card.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+
+  .card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .card-title {
+    font-weight: bold;
+    color: #dc3545; /* Vermelho sorveteria */
+  }
+
+  .card-body p {
+    font-size: 0.95rem;
+  }
+
+  .btn-filtro {
+    margin: 0 5px 10px 5px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-filtro:hover {
+    transform: scale(1.05);
+  }
+
+  .container-mt-4 {
+    padding: 40px 20px;
+  }
+
+  h2.text-center {
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #dc3545;
+    text-shadow: 1px 1px #f8d7da;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  
+
+   <!-- Cabeçalho dinâmico -->
+   <header id="header-container"></header>
+
+   <!-- Contêiner onde o menu será inserido -->
+   <div id="menu-container"></div>
+  
+  <div class="container-mt-4">
+    <h2 class="text-center">Nosso Cardápio</h2>
+    
+    <!-- Filtros -->
+    <div class="text-center mb-4">
+      <button class="btn btn-outline-primary btn-filtro" onclick="filtrar('todos')">Todos</button>
+      <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('taca')">Taças</button>
+      <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('casquinha')">Casquinhas</button>
+      <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('cascao')">Cascao</button>
+      <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('copo')">Copo</button>
+      <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('banana')">Banana Split</button>
+      <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('quilo')">Por Quilo</button>
+      <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('milkshake')">Milkshake</button>
+    </div>
+
+    <!-- Itens do Cardápio -->
+    <div class="row g-4 justify-content-center">
+
+      <!-- Cascao 1-->
+      <div class="col-md-4 cardapio-item cascao">
+        <div class="card h-100 text-center">
+          <img src="Imagens/CascaoDuo.jpeg" class="card-img-top" alt="Cascao Tradicional">
+          <div class="card-body">
+            <h5 class="card-title">Cascao Tradicional</h5>
+            <p>Duo Sorvete cremoso em cascao crocante.</p>
+            <p class="text-primary"><strong>R$ 20,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cascao 2-->
+      <div class="col-md-4 cardapio-item cascao">
+        <div class="card h-100 text-center">
+          <img src="Imagens/CascaoChoco.jpg" class="card-img-top" alt="Cascao Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">Cascao Chocolate</h5>
+            <p>Sorvete cremoso em cascao crocante de chocolate.</p>
+            <p class="text-primary"><strong>R$ 14,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+       <!-- Cascao 3-->
+       <div class="col-md-4 cardapio-item cascao">
+        <div class="card h-100 text-center">
+          <img src="Imagens/CascaoCream.jpg" class="card-img-top" alt="Cascao Cream">
+          <div class="card-body">
+            <h5 class="card-title">Cascao de Creme</h5>
+            <p>Sorvete cremoso em cascao em creme.</p>
+            <p class="text-primary"><strong>R$ 12,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Casquinha1 -->
+      <div class="col-md-4 cardapio-item casquinha">
+        <div class="card h-100 text-center">
+          <img src="Imagens/Casquinha.jpg" class="card-img-top" alt="Casquinha Tradicional">
+          <div class="card-body">
+            <h5 class="card-title">Casquinha Tradicional</h5>
+            <p>Sorvete cremoso em casquinha crocante.</p>
+            <p class="text-primary"><strong>R$ 8,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Casquinha2 -->
+      <div class="col-md-4 cardapio-item casquinha">
+        <div class="card h-100 text-center">
+          <img src="Imagens/CasquinhaMista.png" class="card-img-top" alt="Casquinha mista">
+          <div class="card-body">
+            <h5 class="card-title">Casquinha Mista Tradicional </h5>
+            <p>Sorvete cremoso na casquinha mista.</p>
+            <p class="text-primary"><strong>R$ 8,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Casquinha3 -->
+      <div class="col-md-4 cardapio-item casquinha">
+        <div class="card h-100 text-center">
+          <img src="Imagens/CasquinhaCream.jpg" class="card-img-top" alt="Casquinha cream">
+          <div class="card-body">
+            <h5 class="card-title">Casquinha Creme Tradicional </h5>
+            <p>Sorvete cremoso na casquinha de creme.</p>
+            <p class="text-primary"><strong>R$ 8,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copo de Massa 1-->
+      <div class="col-md-4 cardapio-item copo">
+        <div class="card h-100 text-center">
+          <img src="Imagens/SorveteCopoMor.jpeg" class="card-img-top" alt="Copo de Sorvete">
+          <div class="card-body">
+            <h5 class="card-title">Copo de Sorvete</h5>
+            <p>Até 3 sabores com toppings à sua escolha.</p>
+            <p class="text-primary"><strong>R$ 30,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copo de Massa 2-->
+      <div class="col-md-4 cardapio-item copo">
+        <div class="card h-100 text-center">
+          <img src="Imagens/SorveteCopoCalda.jpg" class="card-img-top" alt="Copo de Sorvete com Calda">
+          <div class="card-body">
+            <h5 class="card-title">Copo de sorvete com calda</h5>
+            <p>Até 3 sabores com toppings à sua escolha.</p>
+            <p class="text-primary"><strong>R$ 15,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copo de Massa 3-->
+      <div class="col-md-4 cardapio-item copo">
+        <div class="card h-100 text-center">
+          <img src="Imagens/sorveteCopo.jpeg" class="card-img-top" alt="Copo de Sorvete">
+          <div class="card-body">
+            <h5 class="card-title">Copo de Sorvete</h5>
+            <p>Até 3 sabores com toppings à sua escolha.</p>
+            <p class="text-primary"><strong>R$ 45,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taça 1-->
+      <div class="col-md-4 cardapio-item taca">
+        <div class="card h-100 text-center">
+          <img src="Imagens/SorveteTaca.jpg" class="card-img-top" alt="Taca de Sorvete">
+          <div class="card-body">
+            <h5 class="card-title">Taça de Sorvete</h5>
+            <p>Até 3 sabores com toppings à sua escolha.</p>
+            <p class="text-primary"><strong>R$ 20,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taça 2-->
+      <div class="col-md-4 cardapio-item taca">
+        <div class="card h-100 text-center">
+          <img src="Imagens/SorveteTacaBauniChoco.jpg" class="card-img-top" alt="Taca de Sorvete baunilha">
+          <div class="card-body">
+            <h5 class="card-title">Taça de Sorvete de Baunilha</h5>
+            <p>Até 3 sabores com toppings à sua escolha.</p>
+            <p class="text-primary"><strong>R$ 20,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+    <!-- Taça 3-->
+    <div class="col-md-4 cardapio-item taca">
+      <div class="card h-100 text-center">
+        <img src="Imagens/SorveteTacaConquista.jpg" class="card-img-top" alt="Taca de Sorvete conquista">
+        <div class="card-body">
+          <h5 class="card-title">Taça de Sorvete Conquista</h5>
+          <p>Até 3 sabores com toppings à sua escolha.</p>
+          <p class="text-primary"><strong>R$ 25,00</strong></p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Taça 4-->
+    <div class="col-md-4 cardapio-item taca">
+      <div class="card h-100 text-center">
+        <img src="Imagens/SorveteTacaDoce.jpg" class="card-img-top" alt="Taca de Sorvete Doce">
+        <div class="card-body">
+          <h5 class="card-title">Taça de Sorvete Doce</h5>
+          <p>Até 3 sabores com toppings à sua escolha.</p>
+          <p class="text-primary"><strong>R$ 25,00</strong></p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Taça 5-->
+    <div class="col-md-4 cardapio-item taca">
+      <div class="card h-100 text-center">
+        <img src="Imagens/SorveteTacaGourmet.jpg" class="card-img-top" alt="Taca de Sorvete gourmet">
+        <div class="card-body">
+          <h5 class="card-title">Taça de Sorvete Gourmet</h5>
+          <p>Até 3 sabores com toppings à sua escolha.</p>
+          <p class="text-primary"><strong>R$ 50,00</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Taça 6-->
+    <div class="col-md-4 cardapio-item taca">
+      <div class="card h-100 text-center">
+        <img src="Imagens/SorveteTacaPremium.jpg" class="card-img-top" alt="Taca de Sorvete premium">
+        <div class="card-body">
+          <h5 class="card-title">Taça de Sorvete Premium</h5>
+          <p>Até 3 sabores com toppings à sua escolha.</p>
+          <p class="text-primary"><strong>R$ 75,00</strong></p>
+        </div>
+      </div>
+    </div>
+
+      <!-- Banana Split1 -->
+      <div class="col-md-4 cardapio-item banana">
+        <div class="card h-100 text-center">
+          <img src="Imagens/BananaChantininho.jpeg" class="card-img-top" alt="Banana ninho">
+          <div class="card-body">
+            <h5 class="card-title">Banana Split Chantininho</h5>
+            <p>Banana, 3 bolas de sorvete, calda e chantilly.</p>
+            <p class="text-primary"><strong>R$ 25,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banana Split2 -->
+      <div class="col-md-4 cardapio-item banana">
+        <div class="card h-100 text-center">
+          <img src="Imagens/BananaDelicia.jpg" class="card-img-top" alt="Banana delicia">
+          <div class="card-body">
+            <h5 class="card-title">Banana Split Delicia</h5>
+            <p>Banana, 3 bolas de sorvete, calda e chantilly.</p>
+            <p class="text-primary"><strong>R$ 25,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banana Split3 -->
+      <div class="col-md-4 cardapio-item banana">
+        <div class="card h-100 text-center">
+          <img src="Imagens/BananaMorango.jpg" class="card-img-top" alt="Banana morango">
+          <div class="card-body">
+            <h5 class="card-title">Banana Split Morango</h5>
+            <p>Banana, 3 bolas de sorvete, calda e chantilly.</p>
+            <p class="text-primary"><strong>R$ 25,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sorvete por Quilo1 -->
+      <div class="col-md-4 cardapio-item quilo">
+        <div class="card h-100 text-center">
+          <img src="Imagens/SorveteKiloChoco.jpeg" class="card-img-top" alt="Sorvete kilo choco">
+          <div class="card-body">
+            <h5 class="card-title">Sorvete por Quilo Chocolate</h5>
+            <p>Monte seu prato com sabores e acompanhamentos.</p>
+            <p class="text-primary"><strong>R$ 49,90/kg</strong></p>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- Sorvete por Quilo2 -->
+        <div class="col-md-4 cardapio-item quilo">
+          <div class="card h-100 text-center">
+            <img src="Imagens/SorveteKiloVerde.jpg" class="card-img-top" alt="Sorvete kilo verde">
+            <div class="card-body">
+              <h5 class="card-title">Sorvete por Quilo Misto</h5>
+              <p>Monte seu prato com sabores e acompanhamentos.</p>
+              <p class="text-primary"><strong>R$ 49,90/kg</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sorvete por Quilo3 -->
+        <div class="col-md-4 cardapio-item quilo">
+          <div class="card h-100 text-center">
+            <img src="Imagens/SorveteKiloFolha.jpg" class="card-img-top" alt="Sorvete kilo folha">
+            <div class="card-body">
+              <h5 class="card-title">Sorvete por Quilo Folha</h5>
+              <p>Monte seu prato com sabores e acompanhamentos.</p>
+              <p class="text-primary"><strong>R$ 49,90/kg</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milkshake1 -->
+        <div class="col-md-4 cardapio-item milkshake">
+          <div class="card h-100 text-center">
+            <img src="Imagens/MilkshakePoloSul.jpg" class="card-img-top" alt="Milkshake PoloSul">
+            <div class="card-body">
+              <h5 class="card-title">Milkshake Polo Sul</h5>
+              <p>Sabores morango, chocolate e baunilha.</p>
+              <p class="text-primary"><strong>R$ 36,00</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milkshake2 -->
+        <div class="col-md-4 cardapio-item milkshake">
+          <div class="card h-100 text-center">
+            <img src="Imagens/MilkShakeCappucino.jpg" class="card-img-top" alt="Milkshake cappucino">
+            <div class="card-body">
+              <h5 class="card-title">Milkshake Cappucino</h5>
+              <p>Sabores morango, chocolate e baunilha.</p>
+              <p class="text-primary"><strong>R$ 18,00</strong></p>
+            </div>
+          </div>
+        </div>
+
+      <!-- Milkshake3 -->
+      <div class="col-md-4 cardapio-item milkshake">
+        <div class="card h-100 text-center">
+          <img src="Imagens/MilkShakeFrappe.jpg" class="card-img-top" alt="Milkshake frappe">
+          <div class="card-body">
+            <h5 class="card-title">Milkshake Frappe</h5>
+            <p>Sabores morango, chocolate e baunilha.</p>
+            <p class="text-primary"><strong>R$ 18,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milkshake4 -->
+      <div class="col-md-4 cardapio-item milkshake">
+        <div class="card h-100 text-center">
+          <img src="Imagens/MilkShakeTropical.jpeg" class="card-img-top" alt="Milkshake tropical">
+          <div class="card-body">
+            <h5 class="card-title">Milkshake Tropical</h5>
+            <p>Sabores morango, chocolate e baunilha.</p>
+            <p class="text-primary"><strong>R$ 18,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milkshake5 -->
+      <div class="col-md-4 cardapio-item milkshake">
+        <div class="card h-100 text-center">
+          <img src="Imagens/MilkShakeMorango.jpg" class="card-img-top" alt="Milkshake morango">
+          <div class="card-body">
+            <h5 class="card-title">Milkshake Morango</h5>
+            <p>Sabores morango, chocolate e baunilha.</p>
+            <p class="text-primary"><strong>R$ 18,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milkshake6 -->
+      <div class="col-md-4 cardapio-item milkshake">
+        <div class="card h-100 text-center">
+          <img src="Imagens/MilkShakeBiscoito.png" class="card-img-top" alt="Milkshake biscoito">
+          <div class="card-body">
+            <h5 class="card-title">Milkshake Biscoito</h5>
+            <p>Sabores morango, chocolate e baunilha.</p>
+            <p class="text-primary"><strong>R$ 20,00</strong></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+   <div id="footer-container"></div>
+
+
+  <!-- Script de Filtro -->
+  <script>
+    function filtrar(tipo) {
+      const itens = document.querySelectorAll('.cardapio-item');
+      itens.forEach(item => {
+        if (tipo === 'todos' || item.classList.contains(tipo)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Mostrar todos por padrão ao carregar
+    window.onload = () => filtrar('todos');
+  </script>
+
+</body>
+</html>

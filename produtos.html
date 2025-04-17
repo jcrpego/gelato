@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <h2>Gerenciar Produtos</h2>
+    <input type="text" id="nomeProduto" class="form-control mb-2" placeholder="Nome do Produto">
+    <button id="adicionar" class="btn btn-success mb-2">Adicionar</button>
+    <ul id="lista" class="list-group"></ul>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function(){
+      $('#adicionar').click(function(){
+        const nome = $('#nomeProduto').val();
+        if(nome) {
+          $('#lista').append(`<li class="list-group-item d-flex justify-content-between">${nome} <button class="btn btn-sm btn-danger excluir">Excluir</button></li>`);
+          $('#nomeProduto').val('');
+        }
+      });
+      $(document).on('click', '.excluir', function(){
+        $(this).parent().remove();
+      });
+    });
+  </script>
+  

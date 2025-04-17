@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Produtos</title>
+  <link rel="stylesheet" href="libs/bootstrap.min.css">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <div id="header"></div>
+  <div class="container mt-4">
+    <h2>Gerenciar Produtos</h2>
+    <form id="form-produto" class="mb-3">
+      <input type="text" id="nome-produto" class="form-control mb-2" placeholder="Nome do Produto">
+      <input type="text" id="descricao-produto" class="form-control mb-2" placeholder="Descrição">
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+    <ul id="lista-produtos" class="list-group"></ul>
+  </div>
+  <script src="libs/jquery.min.js"></script>
+  <script>
+    $('#header').load('header.html');
+
+    $(function() {
+      $('#form-produto').on('submit', function(e) {
+        e.preventDefault();
+        const nome = $('#nome-produto').val();
+        const descricao = $('#descricao-produto').val();
+        if (nome && descricao) {
+          $('#lista-produtos').append(`<li class="list-group-item d-flex justify-content-between">${nome} - ${descricao}<button class="btn btn-danger btn-sm ms-2 excluir">Excluir</button></li>`);
+          $('#form-produto')[0].reset();
+        }
+      });
+      $('#lista-produtos').on('click', '.excluir', function() {
+        $(this).parent().remove();
+      });
+    });
+  </script>
+</body>
+</html>

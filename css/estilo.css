@@ -1,0 +1,123 @@
+.container-mt-4{
+  padding: 10px 0;
+ 
+}
+
+/* Estilo do Header */
+header {
+  background-color: #ff6347;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: sticky;  /* Torna o header fixo no topo ao rolar */
+  top: 0;  /* Coloca o header no topo */
+  z-index: 1001;  /* Garante que o header fique acima da barra de menu */
+  width: 100%;  /* Garante que o header ocupe toda a largura da tela */
+  height: 100px;  /* Definindo uma altura fixa para o header */
+}
+
+/* Estilo da barra de menu */
+.menu-bar {
+  background-color: #333 !important;
+  /* position: sticky;   */ /* Torna a barra de menu fixa ao rolar */
+  position: fixed;
+  top: 100px;  /* Garante que a barra de menu apareça logo abaixo do header */
+  z-index: 1000;  /* Garante que a barra de menu fique abaixo do header */
+  width: 100%;  /* Garante que a barra de menu ocupe toda a largura da tela */
+  margin-top: 0;  /* Garante que não haja margens adicionais */
+  height: 50px;
+}
+
+/* Estilo dos links de navegação na barra de menu */
+.menu-bar .nav-link {
+  color: white;
+  padding: 10px 15px;  /* Ajusta o espaçamento interno dos links */
+  text-decoration: none;  /* Remove sublinhado dos links */
+}
+
+/* Efeito de hover para os links de navegação */
+.menu-bar .nav-link:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Estilo do container do menu */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;  /* Ajuste para garantir que o conteúdo fique abaixo da barra de menu */
+  margin-bottom: 80px; /* Espaço para o footer fixo */
+}
+
+/* Estilo dos itens do menu */
+.menu-item {
+  width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+
+  .menu-item img {
+    width: 100%;
+    border-radius: 8px;
+    height: 360px;
+    object-fit: cover;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    /* position: fixed; */
+    width: 100%;
+    bottom: 0;
+
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    display: flex;
+
+
+
+  }
+  
+  /*Pagina promocao define a altura das imagens */
+  /*caminha: <img src="Imagens/promo_casquinha1.jpg" class="card-img-top" alt="Casquinha Promocional">*/
+  .card-img-top {
+    width: 100%;
+    border-radius: 8px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  body.visivel {
+    opacity: 1;
+  }
+  
+  /* Pré-carregador
+  #preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(29, 28, 28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1111;
+    transition: opacity 0.2s ease;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(0.1deg); }
+  } */
+  

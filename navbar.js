@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link text-white" href="index.html">Início</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="cardapio.html">Cardápio</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="promocoes.html">Promoções</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="contato.html">Contato</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="quemsomos.html">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="/gelato/index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="/gelato/cardapio.html">Cardápio</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="/gelato/promocoes.html">Promoções</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="/gelato/contato.html">Contato</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="/gelato/quemsomos.html">Sobre</a></li>
           </ul>
           <ul class="navbar-nav">
             ${
